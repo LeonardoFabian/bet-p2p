@@ -1,0 +1,52 @@
+.wrap h1 {
+    font-weight: 700;
+}
+
+.postbox {
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+}
+
+.postbox .inside {
+    display: table;
+}
+
+.postbox .betp2p-articles > li {
+    float: left;
+    margin: 5px;
+    text-align: center;
+    height: 290px; /* 290 */
+    width: 250px; /* */
+    overflow: hidden;
+}
+
+.postbox .betp2p-articles li li {
+    margin: 2px 0;
+    padding: 0;
+}
+
+.postbox .betp2p-articles img {
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+h2.hndle span {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.meta-box-sortables input {
+    padding: .5rem 1rem;
+}
+
+.wp-core-ui .button-primary {
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+}
+
+/* Odd API table */
+
+div.odds-api-today-odds-table-wrap {
+    width: 97%;
+}

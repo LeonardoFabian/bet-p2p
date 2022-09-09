@@ -1,0 +1,90 @@
+:root {
+    --montserrat: 'Montserrat', sans-serif;
+    --lora: 'Lora', serif;
+    --amiko: 'Amiko', sans-serif;
+
+    --container: 1600px;
+
+    --blue: rgb(4,30,66);
+    --red: rgb(200,0,28); /* #c8001c */
+    --light-red: rgb(255,239,241); /* #ffeff1 */
+    --gray: rgb(226,226,226);
+    --dark-gray: rgb(107, 114, 128);
+    --white: rgb(255,255,255);
+    --black: rgb(0,0,0);
+    --primary: rgb(51,85,128); /* #335580 */
+    --accent: rgb(0,212,243); /* #00d4f3 */
+    --dark: rgb(17, 24, 39);
+
+    --shadow: 0 1px 4px rgb(0 0 0 / 16%);
+}
+
+.betp2p-match-item {
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.betp2p-match-item:last-of-type {
+    margin-bottom: 0;
+}
+
+.betp2p-match-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--gray);
+    color: var(--dark-gray);
+    padding: 1rem 1.5rem;
+    border-radius: 4px 4px 0 0;
+    overflow: hidden;
+}
+
+.betp2p-match-item-date time {
+    color: var(--dark-gray);
+}
+
+.betp2p-match-item-content {
+    background-color: var(--white);
+    /* padding: 1rem 2rem; */
+}
+.betp2p-match-item-away-team,
+.betp2p-match-item-away-team {
+    padding: 1rem 2rem;
+}
+
+p.betp2p-match-team {
+    line-height: .5 !important;
+    margin-bottom: 4px;
+}
+
+.betp2p-match-item-footer {
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;    
+    overflow: hidden;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    
+}
+
+a.betp2p-match-item-submit-bet {    
+    color: var(--white);
+    background-color: var(--accent);
+    display: block;    
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    line-height: 1.6;
+}
+.dashicons {
+    margin-left: 2rem;
+}
+
+/* BET FORM */
+
+.block {
+    display: block;
+}
+

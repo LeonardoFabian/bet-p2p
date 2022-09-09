@@ -1,0 +1,131 @@
+.bets-page {
+    display: block;
+}
+@media (min-width: 768px) {
+    .bets-page {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+.betp2p-bets-list {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .betp2p-bets-list {
+        width: 68%;
+    }
+}
+.betp2p-bets-list table#betp2p-bets-table {
+    width: 100%;
+}
+.betp2p-bets-list table#betp2p-bets-table,
+.betp2p-bets-selected table#betp2p-bets-selected-table,
+.betp2p-bets-selected table#betp2p-bets-checkout-table {
+    border-collapse: collapse;
+    border-spacing: 0px 20px;
+    margin-top: 2rem;
+}
+.betp2p-bets-list table#betp2p-bets-table caption,
+.betp2p-bets-selected table#betp2p-bets-selected-table caption,
+.betp2p-bets-selected table#betp2p-bets-checkout-table caption {
+    margin-bottom: 2rem;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 2rem;
+}
+.betp2p-bets-list table#betp2p-bets-table thead,
+.betp2p-bets-selected table#betp2p-bets-selected-table thead,
+.betp2p-bets-selected table#betp2p-bets-checkout-table thead {
+    background-color: var(--blue);
+    color: var(--white);    
+}
+.betp2p-bets-list table#betp2p-bets-table thead th,
+.betp2p-bets-selected table#betp2p-bets-selected-table thead th,
+.betp2p-bets-selected table#betp2p-bets-checkout-table thead th {
+    padding: 1rem 2rem;
+    border: none;
+}
+.betp2p-bets-list table#betp2p-bets-table tbody tr {
+    border-top: 10px solid !important;
+    border-color: var(--gray) !important;
+}
+.betp2p-bets-list table#betp2p-bets-table tbody tr.disabled td {
+    background-color: rgba(255,255,255,0.5);
+    padding: 1rem 2rem;  
+}
+.betp2p-bets-list table#betp2p-bets-table tbody tr td {
+
+}
+.betp2p-bets-list table#betp2p-bets-table tbody tr td .betp2p-bet-title {    
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.betp2p-bets-list table#betp2p-bets-table tbody tr td.betp2p-bet-meta {    
+    text-transform: uppercase;   
+}
+.betp2p-bets-list table#betp2p-bets-table tbody tr td p {    
+    margin: 0;
+    color: var(--dark-gray);
+}
+
+
+/* SELECTED BETS */
+
+.betp2p-bets-selected table#betp2p-bets-selected-table tbody tr:first-of-type,
+.betp2p-bets-selected table#betp2p-bets-checkout-table tbody tr:first-of-type {
+    border-top: 10px solid !important;
+    border-color: var(--gray) !important;
+}
+.betp2p-bets-selected table#betp2p-bets-selected-table tbody tr td,
+.betp2p-bets-selected table#betp2p-bets-checkout-table tbody tr td {
+    background-color: var(--white);
+    padding: 1rem 2rem; 
+}
+
+.betp2p-bets-selected table#betp2p-bets-selected-table tbody tr td .betp2p-selected-bet-title {
+    color: var(--primary);
+    font-weight: 700;
+}
+.betp2p-bets-selected table#betp2p-bets-selected-table tbody tr td.betp2p-selected-bet-meta {    
+    text-transform: uppercase;   
+}
+.betp2p-bets-selected table#betp2p-bets-selected-table tbody tr td p {    
+    margin: 0;
+    color: var(--dark-gray);
+}
+
+/* CHECK OUT TABLE */
+
+.betp2p-bets-selected {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .betp2p-bets-selected {
+        width: 30%;
+    }
+}
+.betp2p-bets-selected table#betp2p-bets-selected-table {
+    width: 100%;
+}
+.betp2p-bets-selected table#betp2p-bets-checkout-table {
+    width: 100%;
+}
+.betp2p-bets-selected table#betp2p-bets-checkout-table tbody tr td p {
+    margin: 0;
+    color: var(--dark-gray);
+}
+.betp2p-bets-selected table#betp2p-bets-checkout-table tbody tr td input[type=text] {
+    height: 48px;
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+
+/* OPEN BETS */
+
+#betp2p-bets-table .betp2p-open-bets.disabled .betp2p-bet-title {
+    color: var(--dark-gray);
+}
