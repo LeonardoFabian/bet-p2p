@@ -129,3 +129,14 @@
 #betp2p-bets-table .betp2p-open-bets.disabled .betp2p-bet-title {
     color: var(--dark-gray);
 }
+
+#betp2p-bets-table td {
+    padding: 2rem;
+}
+
+/* BET COUNTDOWN */
+
+.betp2p-countdown {
+    justify-content: center;
+    align-items: center;
+}

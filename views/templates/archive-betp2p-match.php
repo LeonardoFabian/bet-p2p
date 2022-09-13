@@ -1,11 +1,5 @@
 <?php get_header(); ?>
 
-    <div class="flex items-center">
-        <?php foreach ( $sports as $sport ) : ?>
-            <a href="<?php echo esc_url( get_term_link($sport) ) ?>"><?php echo esc_html($port->name); ?></a>
-        <?php endforeach ?>
-    </div>
-
     <div class="section container with-two-sidebar">
 
         <!-- page-navigation -->

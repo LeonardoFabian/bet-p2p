@@ -97,7 +97,7 @@
 
                     <tbody>
 
-                        <?php foreach( $bets as $bet ) : ?>       
+                        <?php foreach( $bets as $key => $bet ) : ?>       
                             
                             <?php 
                             $commence_time = date( 'd-m-Y h:i:s a', strtotime( $bet->commence_time ) );
@@ -113,6 +113,10 @@
                                     <p>
                                         <?php esc_html_e( $commence_time ); ?> | <?php printf( esc_html__( 'Bet ID: %d', 'betp2p'), $bet->bet_id ) ?>
                                     </p>
+                                    <div class="betp2p-countdown-<?php echo $key; ?>"></div>
+
+                                    <input class="match-commence-time" type="hidden" value="<?php echo esc_html( $bet->commence_time ); ?>" />
+
                                 </td>
 
                                 <td>
@@ -168,7 +172,7 @@
                                     
                                         <?php if ( ! $is_match_in_progress ) : ?>
                                             <?php if ( $bet->bet_status == 'open' ) : ?>
-                                                <a href="<?php echo esc_url( $take_bet ); ?>">
+                                                <a href="<?php echo esc_url( $take_bet ); ?>" class="btn btn-accent">
                                                     <?php esc_html_e( 'Take Bet', 'betp2p' ); ?>
                                                 </a>
                                             <?php else: ?>

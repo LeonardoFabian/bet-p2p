@@ -244,9 +244,8 @@ section#bet-section input[type=number] {
     text-align: center;
     border-radius: 5px;
 } */
-#bet-section .bet-form-checkout th {
-    height: 48px;
-}
+
+
 #bet-section .bet-form-checkout input[type=text],
 #bet-section .bet-form-checkout input[type=number] {
     width: 12rem;
@@ -408,18 +407,43 @@ select#betp2p_bet_mode_option {
 }
 
 /**FORM DETAILS**/
+
+.bet-form-checkout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3;
+}
+.bet-form-checkout-data {
+    grid-column: 1 / 2;
+    padding: 5rem;
+    text-align: center;
+}
+.bet-form-checkout-meta {
+    grid-column: 2 / 3;
+    padding: 5rem;
+    text-align: center;
+}
+.bet-form-checkout-info {
+    grid-column: 3 / 4;
+    padding: 5rem;
+}
 .bet-form-checkout {
     margin-top: 2rem;
 }
-.bet-form-checkout table {
-    border-collapse: collapse;
-    width: 100%;
-}
-.bet-form-checkout table thead {
+
+.bet-form-checkout .checkout-section-title {
     background-color: var(--red);
     color: var(--white);
     text-align: center;
-    width: 33.33%;
+    width: 100%;
+    padding: 1rem;
+}
+
+.bet-form-checkout .form-group input {
+    margin: 4rem auto 1rem;
+    height: 48px;
+    text-align: center;
+    font-size: 2rem;
 }
 
 

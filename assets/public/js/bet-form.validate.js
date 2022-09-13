@@ -65,4 +65,33 @@ jQuery(document).ready(function(){
         jQuery("#run-scored #selected-teams-points").css("background-color", "#e5effd");
         jQuery("#run-scored #selected-teams-points").focus();
     }
+
+    /**
+     * Checkout validate
+     */
+
+    $("#stake_amount").change(function() {
+
+        stakeAmount = $("#stake_amount").val();
+        ratePercent = $("#ibetcha_payment_rate").val();        
+
+        if ( ratePercent ) {
+            fStakeAmount = parseFloat( stakeAmount );
+            fRatePercent = parseFloat(ratePercent );
+            $totalRate = fStakeAmount * fRatePercent
+            $subTotal = fStakeAmount + $totalRate
+
+            $("#betp2p_rate_amount").val( $totalRate.toFixed(2) )
+            $("#betp2p_bet_subtotal").val( $subTotal.toFixed(2) )
+            // alert($totalRate)
+        } else {
+            $subTotal = parseFloat( stakeAmount );
+            $("#betp2p_bet_subtotal").val( $subTotal.toFixed(2) )
+
+            alert( $subTotal )
+        }      
+        
+
+        
+    })
 });

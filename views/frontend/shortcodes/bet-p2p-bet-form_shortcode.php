@@ -11,6 +11,10 @@
         }
     }
 
+    $ibetcha_payment_options =get_option( 'ibetcha_payment_options' );
+    $ibetcha_advanced_options =get_option( 'ibetcha_advanced_options' );
+    // var_dump($ibetcha_payment_options);                        
+
     $errors = array();
     $hasError = false;
 
@@ -353,87 +357,83 @@
                     </div>
                     
                 </div>
-                <div class="bet-form-checkout">
-                    <table style="background-color: #ffffff;">
-                        <thead>
-                            <th>Bet Details</th>
-                            <th>Balance</th>
-                            <th>Disclosure</th>
-                        </thead>
-                        <tbody>
-                            <td>
-                                <tr>
-                                    <td style="padding: 2rem;">
-                                        <input 
-                                            id="stake_amount"
-                                            name="_betp2p_stake_amount"
-                                            class="block"
-                                            type="number"
-                                            step="1"
-                                            size="3"
-                                            value="<?php if( isset( $stake_amount ) ) echo $stake_amount; ?>"                              />
-                                        <label for="stake_amount"><?php esc_html_e( 'Place Stake Amount', 'betp2p' ); ?></label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 2rem;">
-                                        <input 
-                                            type="text" 
-                                            name="_betp2p_rate_amount"
-                                            id="betp2p_rate_amount" 
-                                            class="block"
-                                            disabled
-                                        >
-                                        <label for="_betp2p_rate_amount"><?php esc_html_e( 'Rate', 'betp2p' ); ?></label>
-                                    </td>
-                                </tr style="display:block;">
-                                <tr>
-                                    <td style="padding: 2rem;">
-                                        <input 
-                                            type="text" 
-                                            name="_betp2p_subtotal"
-                                            id="betp2p_bet_subtotal" 
-                                            class="block"
-                                            disabled
-                                        >
-                                        <label for="_betp2p_subtotal"><?php esc_html_e( 'Subtotal', 'betp2p' ); ?></label>
-                                    </td>
-                                </tr>
-                            </td>
-                            <td>
-                                <div></div>
-                            </td>
-                            <td>
-                                <span>
-                                <!-- If bet is not accepted by takers, the funds will be returned to maker within 24 hours since the game started.
-
-                                If balance does not reach the amount you want to bet, or such amount is not sufficient, a refill can take place, by clicking the icons in the middle.  
-
-                                Once the bet is accepted by taker the bet cannot be edited or cancelled.
-
-                                Winning bets will be deposit to i-betU Account or Affiliate Bookie Account accordingly within 24hours since the official result has been delivered.
-
-                                When sports event has been Canceled the money will be returned to the account where the bet fund was originated (i-betU Account, Affiliate Bookie Account or Bitcoin Account).  
-
-                                Postponed or rescheduled games will remain in full effect until the date.  -->
-
-                                </span>
-                            </td>
-                        </tbody>
-                    </table>
-                </div>            
-
                 
-                <div style="margin: 4rem; text-align:center;">
-                    <input type="hidden" name="_betp2p_share_type" value="open">
-                    <input type="hidden" name="match_id" value="<?php esc_html_e( $results[0]['match_id'] ); ?>" />
-                    <input type="hidden" name="betp2p_action" value="save" />
-                    <input type="hidden" name="action" value="editpost" />
-                    <input type="hidden" name="betp2p_nonce" value="<?php echo wp_create_nonce( 'betp2p_nonce' ); ?>" />
-                    <input type="hidden" name="betp2p_form_submitted" id="betp2p_form_submitted" value="true" />
-                    <input class="btn btn-primary" type="submit" name="submit_betp2p_bet_form" value="<?php esc_attr_e( 'Make Bet', 'betp2p' ); ?>" />
-                    <a href="<?php echo esc_url( home_url( '/matches' ) ); ?>" class="btn btn-secondary" ><?php esc_html_e( 'Go Back', 'betp2p' ); ?></a>
+        </section>
+
+        <section>
+            <div class="bet-form-checkout">
+                <div class="bet-form-checkout-data">
+                    <div class="checkout-section-title">
+                        <h2><?php echo esc_html( 'Bet Details', 'ibetcha' ); ?></h2>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <input 
+                                id="stake_amount"
+                                name="_betp2p_stake_amount"
+                                class="block"
+                                type="number"
+                                step="1"
+                                size="3"
+                                value="<?php if( isset( $stake_amount ) ) echo $stake_amount; ?>"                              />
+                            <label for="stake_amount"><?php esc_html_e( 'Place Stake Amount', 'betp2p' ); ?></label>
+                        </div>                   
+                    
+                        <?php if ( $ibetcha_payment_options['ibetcha_payment_apply_rate'] == '1') : ?>
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                name="_betp2p_rate_amount"
+                                id="betp2p_rate_amount" 
+                                class="block"
+                                disabled
+                            >
+                            <input type="hidden" id="ibetcha_payment_rate" value="<?php echo $ibetcha_payment_options['ibetcha_payment_rate']; ?>" />
+                            <label for="_betp2p_rate_amount"><?php esc_html_e( 'Rate', 'betp2p' ); ?> (<?php echo $ibetcha_payment_options['ibetcha_payment_rate']; ?> %)</label>
+                        </div>
+                        <?php endif; ?>
+                    
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                name="_betp2p_subtotal"
+                                id="betp2p_bet_subtotal" 
+                                class="block"
+                                disabled
+                            >
+                            <label for="_betp2p_subtotal"><?php esc_html_e( 'Subtotal', 'betp2p' ); ?></label>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="bet-form-checkout-meta">
+                    <div class="checkout-section-title">
+                        <h2><?php echo esc_html( 'Balance', 'ibetcha' ); ?></h2>
+                    </div>
+                    <p>Mostrar aqui el balance del usuario</p>
+                </div>
+                
+                <div class="bet-form-checkout-info">
+                    <div class="checkout-section-title">
+                        <h2><?php echo esc_html( 'Disclosure', 'ibetcha' ); ?></h2>
+                    </div>                       
+
+                    <p><?php echo $ibetcha_advanced_options['ibetcha_disclosure']; ?></p>
+                </div>
+                    
+            </div>            
+
+            
+            <div style="margin: 4rem; text-align:center;">
+                <input type="hidden" name="_betp2p_share_type" value="open">
+                <input type="hidden" name="match_id" value="<?php esc_html_e( $results[0]['match_id'] ); ?>" />
+                <input type="hidden" name="betp2p_action" value="save" />
+                <input type="hidden" name="action" value="editpost" />
+                <input type="hidden" name="betp2p_nonce" value="<?php echo wp_create_nonce( 'betp2p_nonce' ); ?>" />
+                <input type="hidden" name="betp2p_form_submitted" id="betp2p_form_submitted" value="true" />
+                <input class="btn btn-primary" type="submit" name="submit_betp2p_bet_form" value="<?php esc_attr_e( 'Make Bet', 'betp2p' ); ?>" />
+                <a href="<?php echo esc_url( home_url( '/matches' ) ); ?>" class="btn btn-secondary" ><?php esc_html_e( 'Go Back', 'betp2p' ); ?></a>
+            </div>
         </section>
 
     </form>     
