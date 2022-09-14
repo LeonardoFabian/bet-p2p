@@ -103,6 +103,24 @@ if ( ! class_exists( 'BetP2P' ) ) {
             require_once( BETP2P_DIR_PATH . 'shortcodes/class.bet-p2p-matches-shortcode.php' );
             $BetP2P_MatchesShortcode = new BetP2P_Matches_Shortcode();
 
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-account-shortcode.php' );
+            $BetP2P_Account = new BetP2P_Account();
+
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-cash-in-shortcode.php' );
+            $BetP2P_WalletCashIn = new BetP2P_Wallet_Cashin();
+
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-cash-out-shortcode.php' );
+            $BetP2P_WalletCashOut = new BetP2P_Wallet_Cashout();
+
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-transactions-shortcode.php' );
+            $BetP2P_Transactions = new BetP2P_Transactions();
+
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-wallet-shortcode.php' );
+            $BetP2P_Wallet = new BetP2P_Wallet();
+
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-profile-shortcode.php' );
+            $BetP2P_Profile = new BetP2P_Profile();
+
             // widgets
 
             require_once( BETP2P_DIR_PATH . 'widgets/class.bet-p2p-matches-widget.php' );
@@ -288,6 +306,24 @@ if ( ! class_exists( 'BetP2P' ) ) {
 
             }
 
+            // create transactions page if not exists
+            if ( $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name = 'transactions'" ) === null ) {
+
+                $current_user = wp_get_current_user();
+                
+                $page = array(
+                    'post_title' => __('Transactions', 'betp2p' ),
+                    'post_name' => 'transactions',
+                    'post_status' => 'publish',
+                    'post_author' => $current_user->ID,
+                    'post_type' => 'page',
+                    'post_content' => '<!-- wp:shortcode -->[betp2p_transactions]<!-- /wp:shortcode -->'
+                );
+
+                wp_insert_post( $page );
+
+            }
+
             // create cash in page if not exists
             if ( $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name = 'cash-in'" ) === null ) {
 
@@ -300,7 +336,7 @@ if ( ! class_exists( 'BetP2P' ) ) {
                     'post_parent' => $wallet_page_id,
                     'post_author' => $current_user->ID,
                     'post_type' => 'page',
-                    'post_content' => '<!-- wp:shortcode -->[betp2p_cash_in]<!-- /wp:shortcode -->'
+                    'post_content' => '<!-- wp:shortcode -->[betp2p_cashin]<!-- /wp:shortcode -->'
                 );
 
                 wp_insert_post( $page );
@@ -319,7 +355,7 @@ if ( ! class_exists( 'BetP2P' ) ) {
                     'post_parent' => $wallet_page_id,
                     'post_author' => $current_user->ID,
                     'post_type' => 'page',
-                    'post_content' => '<!-- wp:shortcode -->[betp2p_cash_out]<!-- /wp:shortcode -->'
+                    'post_content' => '<!-- wp:shortcode -->[betp2p_cashout]<!-- /wp:shortcode -->'
                 );
 
                 wp_insert_post( $page );
@@ -389,7 +425,8 @@ if ( ! class_exists( 'BetP2P' ) ) {
                     'post_name' => 'profile',
                     'post_status' => 'publish',
                     'post_author' => $current_user->ID,
-                    'post_type' => 'page'
+                    'post_type' => 'page',
+                    'post_content' => '<!-- wp:shortcode -->[betp2p_profile]<!-- /wp:shortcode -->'
                 );
 
                 wp_insert_post( $page );
@@ -735,13 +772,13 @@ if ( ! class_exists( 'BetP2P' ) ) {
             }
 
           
-            wp_enqueue_script(
-                'betp2p-popper',
-                BETP2P_DIR_URL . 'assets/public/js/popper.min.js',
-                array( 'jquery' ),
-                '1.0.0',
-                true
-            );
+            // wp_enqueue_script(
+            //     'betp2p-popper',
+            //     BETP2P_DIR_URL . 'assets/public/js/popper.min.js',
+            //     array( 'jquery' ),
+            //     '1.0.0',
+            //     true
+            // );
         
 
             if ( is_post_type_archive( 'bet-p2p' ) ) {
@@ -829,6 +866,10 @@ if ( ! class_exists( 'BetP2P' ) ) {
 
             if ( is_page( 'cash-out' ) ) {
                 $template = BETP2P_DIR_PATH . 'views/templates/page-cash-out.php';
+            }
+
+            if ( is_page( 'profile' ) ) {
+                $template = BETP2P_DIR_PATH . 'views/templates/page-profile.php';
             }
 
             return $template;

@@ -3,14 +3,8 @@
 <div>
     <?php while ( have_posts() ) : the_post(); ?>
 
-    <!-- <div class="hero" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);">
-        <div class="hero-content">
-            <h1><?php the_title(); ?></h1>
-        </div>
-    </div> -->
-
-    <div class="section container">
-        <main class="main-content">     
+    <div class="section container-fluid">
+        <main class="main-content col-12">     
 
             <?php the_content(); ?>
             

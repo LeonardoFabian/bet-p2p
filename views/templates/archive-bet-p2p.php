@@ -172,7 +172,7 @@
                                     
                                         <?php if ( ! $is_match_in_progress ) : ?>
                                             <?php if ( $bet->bet_status == 'open' ) : ?>
-                                                <a href="<?php echo esc_url( $take_bet ); ?>" class="btn btn-accent">
+                                                <a href="<?php echo esc_url( $take_bet ); ?>" class="btn btn-info">
                                                     <?php esc_html_e( 'Take Bet', 'betp2p' ); ?>
                                                 </a>
                                             <?php else: ?>

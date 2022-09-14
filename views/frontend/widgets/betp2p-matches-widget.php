@@ -36,11 +36,11 @@ $matches = new WP_Query(
     $is_match_in_progress = ( $current_date >= $commence_time ) ? true : false;
     ?>
 
-    <div class="betp2p-match-item">
+    <div class="card mb-4 shadow">
         <form action="" method="POST">
-            <div class="betp2p-match-item-header">
+            <div class="card-header d-flex justify-content-between">
                 <div>
-                    <span><?php esc_html_e( $results[1]['meta_value'] ); ?></span>
+                    <span class="badge rounded-pill bg-light text-dark"><?php esc_html_e( $results[1]['meta_value'] ); ?></span>
                 </div>
                 <?php if ( $show_date ): ?>
                     <div class="betp2p-match-item-date">
@@ -48,7 +48,7 @@ $matches = new WP_Query(
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="betp2p-match-item-content">   
+            <div class="card-body">   
                 <div class="betp2p-match-item-away-team">
                     <p class="betp2p-match-team"><strong><?php esc_html_e( $results[4]['meta_value'] ); ?></strong></p>
                     <small><?php esc_html_e( 'Away', 'betp2p' ); ?></small>
@@ -58,16 +58,14 @@ $matches = new WP_Query(
                     <small><?php esc_html_e( 'Home', 'betp2p' ); ?></small>
                 </div>            
             </div>
-            <div class="betp2p-match-item-footer">   
-                <?php if ( ! $is_match_in_progress ) : ?>    
-                    <a class="betp2p-match-item-submit-bet" href="<?php echo esc_url( the_permalink() ); ?>">
+            <?php if ( ! $is_match_in_progress ) : ?>    
+                <div class="card-footer d-flex justify-content-end bg-secondary">   
+                    <a class="btn btn-info" href="<?php echo esc_url( the_permalink() ); ?>">
                         <?php esc_html_e( 'Bet this Match', 'betp2p' ); ?>               
                         <span class="dashicons dashicons-arrow-right-alt"></span>     
                     </a>  
-                <?php else: ?>
-
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
         </form>
     </div>
 

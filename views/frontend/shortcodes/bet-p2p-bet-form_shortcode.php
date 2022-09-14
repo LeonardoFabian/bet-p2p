@@ -111,7 +111,7 @@
             <div class="container">
                 <div class="relative">
                     <div class="hero-tagline text-center">
-                        <h2><?php the_title(); ?></h2>
+                        <h2 class="mb-0"><?php the_title(); ?></h2>
                         <p><b><?php esc_html_e( $results[2]['meta_value'] ); ?></b></p>
                         <input 
                             type="hidden" 
@@ -180,6 +180,7 @@
                                                     name="_betp2p_bet_value" 
                                                     id="_betp2p_bet_value" 
                                                     type="number"
+                                                    class="form-control"
                                                     step="1"
                                                     min="1"
                                                     size="3"
@@ -219,6 +220,7 @@
                                                     name="_betp2p_both_teams_runs_scored" 
                                                     id="both-teams-points"             
                                                     type="number"
+                                                    class="form-control"
                                                     step="1"
                                                     min="0"
                                                     size="3"
@@ -238,6 +240,7 @@
                                                     name="_betp2p_selected_teams_runs_scored" 
                                                     id="selected-teams-points"
                                                     type="number"
+                                                    class="form-control"
                                                     step="1"
                                                     min="0"
                                                     size="3"
@@ -264,9 +267,9 @@
                             </div><!--.bet-->
                         </div>
                         <div class="score-section">                           
-                            <div class="score-tagline">
-                                <table>
-                                    <thead>
+                            <div class="score-tagline table-responsive">
+                                <table class="table table-sm table-bordered table-hover">
+                                    <thead class="table-light">
                                         <th></th>
                                         <th>1</th>
                                         <th>2</th>
@@ -290,7 +293,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><img src="src/img/teams/estrellas.png" alt="Estrellas Orientales"></td>
+                                            <td><img src="src/img/teams/estrellas.png" alt="Estrellas Orientales" class="img-responsive"></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -312,7 +315,7 @@
                                             <td class="score-errors">0</td>
                                         </tr>
                                         <tr>
-                                            <td><img src="src/img/teams/aguilas.png" alt="Aguilas Cibao"></td>
+                                            <td><img src="src/img/teams/aguilas.png" alt="Aguilas Cibao" class="img-responsive"></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -344,7 +347,7 @@
                         <div class="bet-form-middle-flex">
                             <div class="bet-form-vs">
                                 <label for="betp2p_vs_mode_option"><?php esc_html_e( 'Share type', 'betp2p' ); ?></label>
-                                <select name="_betp2p_vs_mode_option" id="betp2p_vs_mode_option">
+                                <select name="_betp2p_vs_mode_option" id="betp2p_vs_mode_option" class="form-select">
                                     <option value="1-vs-1" <?php if( isset( $vs_mode_option ) ) selected( $vs_mode_option, '1-vs-1' ); ?>><?php esc_html_e( '1 vs 1', 'betp2p' ); ?></option>
                                     <option value="team-vs-team-multiple-betors" <?php if( isset( $vs_mode_option ) ) selected( $vs_mode_option, 'team-vs-team-multiple-betors'); ?>><?php esc_html_e( 'Team vs Team (multiple betors)', 'betp2p' ); ?></option>
                                 </select>
@@ -371,7 +374,7 @@
                             <input 
                                 id="stake_amount"
                                 name="_betp2p_stake_amount"
-                                class="block"
+                                class="form-control"
                                 type="number"
                                 step="1"
                                 size="3"
@@ -385,7 +388,7 @@
                                 type="text" 
                                 name="_betp2p_rate_amount"
                                 id="betp2p_rate_amount" 
-                                class="block"
+                                class="form-control"
                                 disabled
                             >
                             <input type="hidden" id="ibetcha_payment_rate" value="<?php echo $ibetcha_payment_options['ibetcha_payment_rate']; ?>" />
@@ -398,7 +401,7 @@
                                 type="text" 
                                 name="_betp2p_subtotal"
                                 id="betp2p_bet_subtotal" 
-                                class="block"
+                                class="form-control"
                                 disabled
                             >
                             <label for="_betp2p_subtotal"><?php esc_html_e( 'Subtotal', 'betp2p' ); ?></label>
@@ -431,7 +434,7 @@
                 <input type="hidden" name="action" value="editpost" />
                 <input type="hidden" name="betp2p_nonce" value="<?php echo wp_create_nonce( 'betp2p_nonce' ); ?>" />
                 <input type="hidden" name="betp2p_form_submitted" id="betp2p_form_submitted" value="true" />
-                <input class="btn btn-primary" type="submit" name="submit_betp2p_bet_form" value="<?php esc_attr_e( 'Make Bet', 'betp2p' ); ?>" />
+                <input class="btn btn-info" type="submit" name="submit_betp2p_bet_form" value="<?php esc_attr_e( 'Make Bet', 'betp2p' ); ?>" />
                 <a href="<?php echo esc_url( home_url( '/matches' ) ); ?>" class="btn btn-secondary" ><?php esc_html_e( 'Go Back', 'betp2p' ); ?></a>
             </div>
         </section>

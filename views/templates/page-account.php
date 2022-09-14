@@ -6,9 +6,9 @@
 
 <?php get_header(); ?>
 
-    <div class="container">
+    <div class="container-fluid">
 
-        Cuenta
+        <?php echo do_shortcode( '[betp2p_account]' ); ?>
 
     </div>
 

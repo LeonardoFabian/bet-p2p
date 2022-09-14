@@ -12,47 +12,37 @@
 
 html {
     box-sizing: border-box;
-    font-size: 50.5%;
+    /* font-size: 50.5%; */
 }
-@media (min-width: 768px){
+/* @media (min-width: 768px){
     html {
         font-size: 62.5%;
     }
-}
+} */
 *, *:before, *:after {
     box-sizing: inherit;
 }
 body {
     /* font-family: var( --work-sans ); */
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
     line-height: 2;
 }
 table, th, td {
     border: 1px solid var(--white);
   }
-p {
+/* p {
     font-size: 1.8rem;
     line-height: .5;
-}
+} */
 h1, h2, h3, h4 {
     /* font-family: var( --montserrat ); */
     font-weight: 900;
 }
 h1 {
-    font-size: 3.2rem;
     line-height: 1.5;
-    /* color: var( --blue-500 ); */
     opacity: .8;
 }
-h2 {
-    font-size: 2.4rem;
-}
-h3 {
-    font-size: 1.6rem;
-}
-h4 {
-    font-size: 1rem;
-}
+
 blockquote {
     /* font-family: var( --lora ); */
 }
@@ -66,7 +56,6 @@ ul {
 }
 ul li,
 ol li {
-    font-size: 1.8rem;
     line-height: 2;
 }
 img {
@@ -236,7 +225,6 @@ section#bet-section input[type=number] {
 .team .team-tagline p.betp2p-team-selected-info {
     color: var(--dark-gray);
     margin-left: 2rem;
-    font-size: 1rem;
 }
 /* #bet-section .bet-form-middle input[type=text] {
     max-width: 6rem;
@@ -320,11 +308,6 @@ section#bet-section input[type=number] {
 .both-teams-point-wrapper li:last-of-type, 
 .selected-teams-point-wrapper li:last-of-type {
     margin-right: 0;
-}
-.point-type-wrapper li label, 
-.both-teams-point-wrapper li label, 
-.selected-teams-point-wrapper li label {
-    font-size: 1.5rem;
 }
 
 /**SCORE**/
@@ -443,7 +426,6 @@ select#betp2p_bet_mode_option {
     margin: 4rem auto 1rem;
     height: 48px;
     text-align: center;
-    font-size: 2rem;
 }
 
 
