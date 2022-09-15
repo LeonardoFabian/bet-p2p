@@ -121,6 +121,9 @@ if ( ! class_exists( 'BetP2P' ) ) {
             require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-profile-shortcode.php' );
             $BetP2P_Profile = new BetP2P_Profile();
 
+            require_once( BETP2P_DIR_PATH . 'shortcodes/class.betp2p-user-bets-shortcode.php' );
+            $BetP2P_UserBets = new BetP2P_User_Bets();
+
             // widgets
 
             require_once( BETP2P_DIR_PATH . 'widgets/class.bet-p2p-matches-widget.php' );
@@ -432,6 +435,24 @@ if ( ! class_exists( 'BetP2P' ) ) {
                 wp_insert_post( $page );
 
             }
+
+            // create user-bets page if not exists
+            if ( $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name = 'user-bets'" ) === null ) {
+
+                $current_user = wp_get_current_user();
+                
+                $page = array(
+                    'post_title' => __('User Bets', 'betp2p' ),
+                    'post_name' => 'user-bets',
+                    'post_status' => 'publish',
+                    'post_author' => $current_user->ID,
+                    'post_type' => 'page',
+                    'post_content' => '<!-- wp:shortcode -->[betp2p_user_bets]<!-- /wp:shortcode -->'
+                );
+
+                wp_insert_post( $page );
+
+            }
         }
 
         /**
@@ -703,6 +724,22 @@ if ( ! class_exists( 'BetP2P' ) ) {
 
         public function register_public_scripts() {
 
+            // Fontawesome
+            wp_enqueue_style( 
+                'betp2p-fontawesome', 
+                BETP2P_DIR_URL .'helpers/fontawesome-5.15.4/css/all.min.css', 
+                array(), 
+                '5.15.4',
+                'all'
+            );
+            wp_enqueue_style( 
+                'betp2p-fontawesome-brands', 
+                BETP2P_DIR_URL .'helpers/fontawesome-5.15.4/css/brands.min.css', 
+                array(), 
+                '5.15.4',
+                'all'
+            );
+
             wp_enqueue_style(
                 'betp2p-public-bet-form-css',
                 BETP2P_DIR_URL . 'assets/css/bet-form.css',
@@ -871,6 +908,15 @@ if ( ! class_exists( 'BetP2P' ) ) {
             if ( is_page( 'profile' ) ) {
                 $template = BETP2P_DIR_PATH . 'views/templates/page-profile.php';
             }
+
+            if ( is_page( 'user-bets' ) ) {
+                $template = BETP2P_DIR_PATH . 'views/templates/page-user-bets.php';
+            }
+
+            if ( is_page( 'transactions' ) ) {
+                $template = BETP2P_DIR_PATH . 'views/templates/page-transactions.php';
+            }
+
 
             return $template;
         }

@@ -14,6 +14,8 @@ if ( ! class_exists( 'BetP2P_Profile' ) ) {
             ob_start();
 
             require( BETP2P_DIR_PATH . 'views/frontend/shortcodes/betp2p-profile_shortcode.php' );
+            wp_enqueue_style( 'betp2p-fontawesome' );
+            wp_enqueue_style( 'betp2p-fontawesome-brands' );
             
             return ob_get_clean();
 

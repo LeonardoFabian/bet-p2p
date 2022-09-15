@@ -18,8 +18,10 @@ if ( ! class_exists( 'BetP2P_Transactions' ) ) {
 
             ob_start();
 
+            require( BETP2P_DIR_PATH . 'views/frontend/shortcodes/betp2p-transactions_shortcode.php' );
+
             return ob_get_clean();
-            
+
         }
 
     }
