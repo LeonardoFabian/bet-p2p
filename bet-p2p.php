@@ -808,6 +808,16 @@ if ( ! class_exists( 'BetP2P' ) ) {
                 );
             }
 
+            if( is_page( 'cash-in' ) ) {
+                wp_enqueue_script(
+                    'betp2p-cash-in-form-validate-js',
+                    BETP2P_DIR_URL . 'assets/public/js/cash-in.validate.js',
+                    array( 'jquery' ),
+                    BETP2P_VERSION,
+                    true
+                );
+            }
+
           
             // wp_enqueue_script(
             //     'betp2p-popper',

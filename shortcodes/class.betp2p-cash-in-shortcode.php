@@ -18,8 +18,11 @@ if ( ! class_exists( 'BetP2P_Wallet_Cashin' ) ) {
 
             ob_start();
 
+            require( BETP2P_DIR_PATH . 'views/frontend/shortcodes/betp2p-cash-in_shortcode.php');
+            wp_enqueue_script( 'betp2p-cash-in-form-validate-js' );
+
             return ob_get_clean();
-            
+
         }
 
     }
